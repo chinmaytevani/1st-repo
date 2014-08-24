@@ -1,0 +1,36 @@
+<form method="post" enctype="multipart/form-data" action="upload.php">
+    <input type="file" name="file" id="file" />
+    <input type="submit" name="submit" value="Submit" />
+</form>
+
+<script>
+document.forms[0].addEventListener('submit', function( evt ) {
+    var file = document.getElementById('file').files[0];
+
+    if(file && file.size < 1048) { // 10 MB (this size is in bytes)
+        //Submit form        
+    } else {
+        //Prevent default and display error
+        evt.preventDefault();
+    }
+}, false);
+</script>
+<!--<script>
+document.getElementById('file').addEventListener('change', checkFile, false);
+
+function checkFile(e) {
+    var file_list = e.target.files;
+    for (var i = 0, file; file = file_list[i]; i++) {
+        var fileExtension = file.name.split('.')[file.name.split('.').length - 1].toLowerCase();
+        var iConvert = (file.size / 1024).toFixed(2);
+
+        txt = "File type : " +fileExtension + "\n";
+        if(file.size > (1024 * 1024)){
+            txt += "Size: " + (file.size / (1024*1024)).toFixed(2) + " MB \n";
+        } else {
+        txt += "Size: " + (file.size / 1024).toFixed(2) + " KB \n";
+        }
+        alert(txt);
+    }
+}
+</script>-->
